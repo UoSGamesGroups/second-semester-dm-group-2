@@ -1,0 +1,49 @@
+-genre: 2D fast paced physics based local battle arena
+-platform: PC
+-target audience
+
+-development process
+	*checked ubisoft examples
+	*went on Steam to check on physics based games - mostly puzzles
+	
+*setting what we expect the player to feel - fiero, competitivity and high desire to triumph over your adversiry
+*setting sub-targets: low input-high output, easy to learn, hard to master (aici sa vorbesc despre cum nu controlul este ce trebuie sa inveti, ci mc movement behaviour, ball behaviour si ball-map relationship), symmetric gameplay 
+*gaining skill is not necesarily something than you can physically quantify therefore we creae a global score and we add vanity items (customizable, taunts)
+*at least one: gravity, friction, time, bouncyness
+*after all the above are set, based on them, we build the idea
+
+-sa zic cum controlul este intuitiv si design-ul revolves around the idea that the player should understand from the beginning that this is a pvp game (a vs b)
+
+-gameplay
+	*fast paced character movement, medium paced fireball (motivul este ca vrei sa fii rapid in pozitionare, dar bila tre sa fie mia inceata ca sa nu fie haotic), am experimentat cu mai multe bile, viteza mai mare pe bila, mai multe bouncy-uri
+	*the winner wins money, while the loser loses money (vrem ca playerii sa fie committed and very focused during the match. High stake will result in a more serious experience, enchanced competitivity)
+	*quick matches: no more than 1-2 minute (because of the above, we don't want players to get tired because of prelong focus)
+	*taunt - big impact on gameplay. The player who gets a successful hit will be able to taunt the opponent. If the taunted player loses, the opposite gets double money, otherwise, it will lose double the money. High risk, high reward (also, we will add "Humiliation") - exemplu hon
+	*vanity items - 3 available at the beginning of the round, 1 will drop every time you get hit| also, customization and uniqueness
+
+
+Art style and effects
+-pixel art
+-theme: 
+-camera shake/chromatic aberation
+-blood and guts	    
+
+-camera shake, particle effects, taunts, vanity items, animations
+
+chromatic aberation https://s-media-cache-ak0.pinimg.com/originals/24/d4/59/24d459ff58b91d794c503e91c247f37c.jpg
+-blood
+-gui design
+-colour palettes
+-typography 
+-art style
+
+
+competition declines with age http://quanticfoundry.com/2016/08/11/appeal-of-competition/
+http://quanticfoundry.com/2016/02/10/gamer-generation/
+totusi tre sa ne gandim ca tre sa aiba anumite reflexe dezvoltate
+
+http://essentialfacts.theesa.com/Essential-Facts-2016.pdf 59% gender of game players - male
+ competitivity level of a 35 female is very close a 55 female http://quanticfoundry.com/2016/08/11/appeal-of-competition/
+
+Tipul cu datele Nick is the co-founder and analytics lead of Quantic Foundry. He combines social science and data science to understand gamer behavior in large-scale game data.
+
