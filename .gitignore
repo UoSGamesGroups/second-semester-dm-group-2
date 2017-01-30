@@ -28,3 +28,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+_UnityProject/.vs/*
+_UnityProject/.vscode/*
+_UnityProject/Library/*
+_UnityProject/obj/*
+_UnityProject/Temp/*
+
