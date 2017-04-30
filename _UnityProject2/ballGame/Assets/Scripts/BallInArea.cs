@@ -26,12 +26,12 @@ public class BallInArea : MonoBehaviour {
 	}
 
 
-	void Update()
-	{
-		if(!isActive)
-			_grayscale.enabled = true;
-		else
-			_grayscale.enabled = false;
-	}
+	// void Update()
+	// {
+	// 	if(!isActive)
+	// 		_grayscale.enabled = true;
+	// 	else
+	// 		_grayscale.enabled = false;
+	// }
 
 }

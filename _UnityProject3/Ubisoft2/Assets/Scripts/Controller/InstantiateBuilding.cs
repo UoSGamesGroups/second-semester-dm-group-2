@@ -5,6 +5,7 @@ using UnityEngine;
 public class InstantiateBuilding : MonoBehaviour {
 
 	[SerializeField] GameObject building;
+	[SerializeField] TextMesh text;
 	[SerializeField] string _tag;
 	[SerializeField] int buildingPrice = 500;
 	Vector2 mousePos;
@@ -17,6 +18,7 @@ public class InstantiateBuilding : MonoBehaviour {
 
 	public void InsBuilding()
 	{
+		Instantiate(text, transform.position, transform.rotation);
 		if(moneyController.Money>=buildingPrice)
 		{
 			Instantiate(building, Input.mousePosition, transform.rotation);

@@ -8,6 +8,7 @@ public class BuildingBehaviour : MonoBehaviour {
 	[SerializeField] GameObject lockPNG;
 	[SerializeField] float force;
 	[SerializeField]bool isHolding = true;
+	[SerializeField] GameObject nextLevelPanel;
 	public static bool isLocked = false;
 	Vector2 pos;
 
@@ -53,6 +54,10 @@ public class BuildingBehaviour : MonoBehaviour {
 		{
 			part.transform.parent = null;
 			part.Play();
+			
+			if(nextLevelPanel != null)
+				nextLevelPanel.gameObject.SetActive(true);
+
 			Vector2 direct = -transform.position + other.collider.transform.position;
 			other.collider.GetComponent<Rigidbody2D>().AddForce(direct * force * Time.deltaTime,ForceMode2D.Impulse );
 			Destroy(gameObject);

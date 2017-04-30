@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_scenes/tutorial.unity
+- path: D:/_Work/_Ubisoft/_UnityProject2/ballGame/Assets/_Scenes/Game1.unity
   isLoaded: 1
   isActive: 1

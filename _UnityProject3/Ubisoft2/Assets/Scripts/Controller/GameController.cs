@@ -14,6 +14,10 @@ public class GameController : MonoBehaviour {
 	[SerializeField] GameObject G_UI;
 	bool isTimerStarting;
 
+
+	MoneyController b_money;
+	MoneyController g_money;
+
 	GameObject B_Base;
 	GameObject G_Base;
 
@@ -23,7 +27,7 @@ public class GameController : MonoBehaviour {
 
 	static public int globalScoreRight = 0;
 	static public int globalScoreLeft = 0;
-	int position = 2;
+	int position = 0;
 
 
 	//check for meteors
@@ -33,10 +37,25 @@ public class GameController : MonoBehaviour {
 	{
 		B_Base = GameObject.FindGameObjectWithTag("Base_r");
 		G_Base = GameObject.FindGameObjectWithTag("Base_l");
+
+		b_money = GameObject.FindGameObjectWithTag("B_Money").GetComponent<MoneyController>();
+		g_money = GameObject.FindGameObjectWithTag("G_Money").GetComponent<MoneyController>();
 	}
 
 	IEnumerator Start()
 	{
+		position = ((globalScoreLeft + globalScoreRight)%2) +1;
+
+		if(position == 1)
+		{
+			transform.position = new Vector2(7, 4);
+			GetComponent<Animator>().SetBool("blue", true);
+		}
+		else
+		{
+			transform.position = new Vector2(-7, 4);
+			GetComponent<Animator>().SetBool("blue", false);
+		}
 		while(true)
 		{
 			meteors = GameObject.FindGameObjectsWithTag("Meteor");
@@ -50,12 +69,14 @@ public class GameController : MonoBehaviour {
 	/// </summary>
 	void Update()
 	{
-			text.text = globalScoreLeft + "  -  " + globalScoreRight;
+			CheckMoneyForTie();
+			text.text = globalScoreRight  + "  -  " + globalScoreLeft;
 			CheckForMeteor();
 
 			if(B_Base == null || G_Base == null)
 			{
 				resetButton.gameObject.SetActive(true);
+				enabled = false;
 			}
 	}
 
@@ -73,7 +94,7 @@ public class GameController : MonoBehaviour {
 			
 			ManipulateButton(false);
 			
-			if(position == 2)
+			if(position == 1)
 			{
 				InstantiateMeteorGreen();
 				G_UI.gameObject.SetActive(true);
@@ -148,6 +169,18 @@ public class GameController : MonoBehaviour {
 		if(meteors.Length == 0)
 		{
 				ManipulateButton(true);
+		}
+	}
+
+
+	void CheckMoneyForTie()
+	{
+		if(b_money.Money == 0 && g_money.Money ==0 )
+		{
+			resetButton.gameObject.SetActive(true);
+			globalScoreRight += 1;
+			globalScoreLeft += 1;
+			enabled = false;
 		}
 	}
 

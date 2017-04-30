@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MeteorBehaviour : MonoBehaviour {
 
+	[SerializeField] ParticleSystem part;
 	[SerializeField] float ms;
+	[SerializeField] TextMesh score;
 	Rigidbody2D rigid;
 	GameObject target;
 	int count = 0;
@@ -25,6 +27,7 @@ public class MeteorBehaviour : MonoBehaviour {
 		isActive = false;
 		timer.endTime  = 4;
 		yield return new WaitForSeconds(4f);
+		GetComponent<CircleCollider2D>().enabled = true;
 		BuildingBehaviour.isLocked = true;
 		isActive = true;
 		ms *=15f;
@@ -49,22 +52,38 @@ public class MeteorBehaviour : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Building")
 		{
+			// PlayDestroParticles();
 			isActive = false;
 			rigid.gravityScale = 1;
+			Multiplier.multiplierStreak++;
+			score.text = Multiplier.ApplyScore().ToString("N0");
+			Instantiate(score, transform.position, Quaternion.Euler(0,0,0));
 		}
 
 		if(col.gameObject.tag == "Base_l")
 		{
+			PlayDestroParticles();
 			BuildingBehaviour.isLocked = false;
-			GameController.globalScoreLeft ++;
+
+			
+			GameController.globalScoreLeft += Multiplier.ApplyScore(true);
+			score.text = Multiplier.ApplyScore().ToString("N0");
+			Instantiate(score, transform.position, Quaternion.Euler(0,0,0));
+
 			Destroy(col.gameObject);
 			Destroy(gameObject);
+			
 		}
 
 		if(col.gameObject.tag == "Base_r")
 		{
+			PlayDestroParticles();
 			BuildingBehaviour.isLocked = false;
-			GameController.globalScoreRight ++;
+
+			GameController.globalScoreRight += Multiplier.ApplyScore(true);
+			score.text = Multiplier.ApplyScore().ToString("N0");
+			Instantiate(score, transform.position, Quaternion.Euler(0,0,0));
+
 			Destroy(col.gameObject);
 			Destroy(gameObject);
 		}
@@ -91,8 +110,16 @@ public class MeteorBehaviour : MonoBehaviour {
 	{
 		if(count >= 2)
 		{
+			Multiplier.multiplierStreak = 0;
+			PlayDestroParticles();
 			BuildingBehaviour.isLocked = false;
 			Destroy(gameObject);
 		}
+	}
+
+	void PlayDestroParticles()
+	{
+		part.transform.parent = null;
+		part.Play();
 	}
 }
